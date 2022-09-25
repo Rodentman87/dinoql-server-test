@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "packages": {
+    "dinoql-ts": {
+      "signature": "dc48eb72631a0edcc488e711aa48a2d2",
+      "file": true
+    },
+    "dinoql-server-ts": {
+      "signature": "1990b02d24a9e810aa9757a6d1f0bb12",
+      "file": true
+    }
+  }
+}
