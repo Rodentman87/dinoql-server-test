@@ -1,5 +1,10 @@
-export class DinoQLEnum {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DinoQLEnum = void 0;
+const Base_1 = require("./Base");
+class DinoQLEnum extends Base_1.BaseDinoQLObject {
     constructor(name, values, docComment, document) {
+        super();
         this.name = name;
         this.values = values;
         this.docComment = docComment;
@@ -18,4 +23,5 @@ export class DinoQLEnum {
         return `Value must be one of ${this.values.join(", ")}`;
     }
 }
+exports.DinoQLEnum = DinoQLEnum;
 //# sourceMappingURL=Enum.js.map

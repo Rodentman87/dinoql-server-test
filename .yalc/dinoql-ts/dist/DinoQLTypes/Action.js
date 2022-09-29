@@ -1,7 +1,10 @@
-import { DinoQLParameter } from "./Parameter.js";
-import { DinoQLType } from "./Type.js";
-export class DinoQLAction {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DinoQLAction = void 0;
+const Base_js_1 = require("./Base.js");
+class DinoQLAction extends Base_js_1.BaseDinoQLObject {
     constructor(name, isStatic, parameters, returnType, docComment, document) {
+        super();
         this.name = name;
         this.isStatic = isStatic;
         this.parameters = parameters;
@@ -34,18 +37,6 @@ export class DinoQLAction {
             return errors;
         return valid;
     }
-    static fromAntlr(ctx, document) {
-        const name = ctx.ID().symbol.text;
-        const isStatic = ctx.STATIC() !== null;
-        const parameters = ctx
-            .parameterListDefinition()
-            .parameterDefinition()
-            .map((p) => DinoQLParameter.fromAntlr(p, document));
-        const returnType = DinoQLType.fromAntlr(ctx.value(), document);
-        const docComment = ctx.DOC_COMMENT() !== null
-            ? ctx.DOC_COMMENT().symbol.text.slice(2, -2).trim()
-            : null;
-        return new DinoQLAction(name, isStatic, parameters, returnType, docComment, document);
-    }
 }
+exports.DinoQLAction = DinoQLAction;
 //# sourceMappingURL=Action.js.map

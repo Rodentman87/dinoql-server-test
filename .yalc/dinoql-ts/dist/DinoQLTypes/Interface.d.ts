@@ -1,6 +1,7 @@
+import { BaseDinoQLObject } from "./Base.js";
 import { DinoQLDocument } from "./Document.js";
 import { DinoQLProperty } from "./Property.js";
-export declare class DinoQLInterface {
+export declare class DinoQLInterface extends BaseDinoQLObject {
     name: string;
     docComment: string | null;
     document: DinoQLDocument;

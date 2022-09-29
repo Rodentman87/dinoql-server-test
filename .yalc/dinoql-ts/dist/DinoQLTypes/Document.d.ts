@@ -2,9 +2,10 @@ import { DinoQLEnum } from "./Enum.js";
 import { DinoQLInterface } from "./Interface.js";
 import { DinoQLResource } from "./Resource.js";
 import { DinoQLScalar } from "./Scalar.js";
-declare type DinoQLDefinition = DinoQLScalar | DinoQLEnum | DinoQLInterface | DinoQLResource;
+export declare type DinoQLDefinition = DinoQLScalar | DinoQLEnum | DinoQLInterface | DinoQLResource;
 export declare class DinoQLDocument {
     definitions: Map<string, DinoQLDefinition>;
+    private hasBeenValidated;
     constructor(definitions: DinoQLDefinition[]);
     validateSchema(): void;
     addDefinition(definition: DinoQLDefinition): void;
@@ -15,4 +16,3 @@ export declare class DinoQLDocument {
     getDefinitions(type: "resource"): DinoQLResource[];
     provideCustomScalarValidator(name: string, validator: (value: any) => boolean): void;
 }
-export {};

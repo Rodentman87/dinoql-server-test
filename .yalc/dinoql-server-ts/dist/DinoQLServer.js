@@ -1,4 +1,5 @@
 import { fastify, } from "fastify";
+import { DeserializationError, Serializer, } from "dinoql-ts";
 import { RequestError } from "./Errors.js";
 export class DinoQLServer {
     constructor(options) {
@@ -7,6 +8,7 @@ export class DinoQLServer {
         this.app = (_a = options.app) !== null && _a !== void 0 ? _a : fastify();
         options.schema.validateSchema();
         this.schema = options.schema;
+        this.serializer = new Serializer(this.schema);
         this.handleRequest = this.handleRequest.bind(this);
         this.handleServerReq = this.handleServerReq.bind(this);
         this.resolveRelations = this.resolveRelations.bind(this);
@@ -64,7 +66,7 @@ export class DinoQLServer {
                 }
                 catch (e) {
                     outputs[request.batchId] = {
-                        _error: e.message,
+                        _error: e.messages,
                     };
                 }
             }
@@ -137,9 +139,15 @@ export class DinoQLServer {
         if (!method) {
             throw new RequestError(400, "Method not found");
         }
-        const params = method.validateParameters(request.params);
-        if (params !== true) {
-            throw new RequestError(400, Object.keys(params).map((key) => params[key]));
+        let params;
+        try {
+            params = this.serializer.deserializeParameters(request.params, method);
+        }
+        catch (e) {
+            if (e instanceof DeserializationError)
+                throw new RequestError(400, e.toJSON());
+            else
+                throw e;
         }
         if (request.relations) {
             const valid = this.validateRelations(resource, request.relations);
@@ -152,10 +160,10 @@ export class DinoQLServer {
             throw new Error(`Resource handler not found for ${request.resource}`);
         let result;
         if (!request.id || request.id === "static") {
-            result = handler[request.method](request.params);
+            result = handler[request.method](params);
         }
         else {
-            result = handler[request.method](request.id, request.params);
+            result = handler[request.method](request.id, params);
         }
         const resolvedResult = await result;
         let final = resolvedResult;

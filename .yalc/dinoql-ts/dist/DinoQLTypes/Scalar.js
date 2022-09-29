@@ -1,8 +1,14 @@
-export const BuiltInScalars = ["string", "boolean", "integer", "float"];
-export class DinoQLScalar {
-    constructor(name, fallbackType, document) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DinoQLScalar = exports.BuiltInScalars = void 0;
+const Base_1 = require("./Base");
+exports.BuiltInScalars = ["string", "boolean", "integer", "float"];
+class DinoQLScalar extends Base_1.BaseDinoQLObject {
+    constructor(name, fallbackType, docComment, document) {
+        super();
         this.name = name;
         this.fallbackType = fallbackType;
+        this.docComment = docComment;
         this.document = document;
         this.type = "scalar";
     }
@@ -10,7 +16,7 @@ export class DinoQLScalar {
         return this.document.getTypeDefinition(this.fallbackType);
     }
     validateSchema() {
-        if (BuiltInScalars.includes(this.fallbackType))
+        if (exports.BuiltInScalars.includes(this.fallbackType))
             return;
         const typeDef = this.document.getTypeDefinition(this.fallbackType);
         if (!typeDef)
@@ -43,4 +49,5 @@ export class DinoQLScalar {
         return typeDef.checkValue(value);
     }
 }
+exports.DinoQLScalar = DinoQLScalar;
 //# sourceMappingURL=Scalar.js.map

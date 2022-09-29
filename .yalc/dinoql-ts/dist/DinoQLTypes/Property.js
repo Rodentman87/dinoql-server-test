@@ -1,6 +1,10 @@
-import { DinoQLType } from "./Type.js";
-export class DinoQLProperty {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DinoQLProperty = void 0;
+const Base_js_1 = require("./Base.js");
+class DinoQLProperty extends Base_js_1.BaseDinoQLObject {
     constructor(name, type, isId, isOptional, docComment, document) {
+        super();
         this.name = name;
         this.type = type;
         this.isId = isId;
@@ -11,15 +15,6 @@ export class DinoQLProperty {
     validateSchema() {
         this.type.validateSchema();
     }
-    static fromAntlr(ctx, document) {
-        const name = ctx.ID().symbol.text;
-        const optional = ctx.OPTIONAL() !== null;
-        const isId = ctx.IDENTIFIER() !== null;
-        const type = DinoQLType.fromAntlr(ctx.value(), document);
-        const docComment = ctx.DOC_COMMENT() !== null
-            ? ctx.DOC_COMMENT().symbol.text.slice(2, -2).trim()
-            : null;
-        return new DinoQLProperty(name, type, isId, optional, docComment, document);
-    }
 }
+exports.DinoQLProperty = DinoQLProperty;
 //# sourceMappingURL=Property.js.map

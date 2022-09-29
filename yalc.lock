@@ -2,11 +2,11 @@
   "version": "v1",
   "packages": {
     "dinoql-ts": {
-      "signature": "dc48eb72631a0edcc488e711aa48a2d2",
+      "signature": "33cea894cc10c0d85bbfcd02baee76ae",
       "file": true
     },
     "dinoql-server-ts": {
-      "signature": "1990b02d24a9e810aa9757a6d1f0bb12",
+      "signature": "e95e976a94c4db90bfbff93d632cd77c",
       "file": true
     }
   }

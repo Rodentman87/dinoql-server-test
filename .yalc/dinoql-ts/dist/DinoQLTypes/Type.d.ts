@@ -1,14 +1,14 @@
+import { BaseDinoQLObject } from "./Base.js";
 import { DinoQLDocument } from "./Document.js";
-export declare class DinoQLType {
+export declare class DinoQLType extends BaseDinoQLObject {
     baseTypeId: string;
     nullable: boolean;
     array: boolean;
     document: DinoQLDocument;
     constructor(baseTypeId: string, nullable: boolean, array: boolean, document: DinoQLDocument);
-    get baseTypeDef(): (import("./Enum.js").DinoQLEnum | import("./Scalar.js").DinoQLScalar | import("./Interface.js").DinoQLInterface | import("./Resource.js").DinoQLResource) | undefined;
+    get baseTypeDef(): import("./Document.js").DinoQLDefinition | undefined;
     validateSchema(): void;
     checkValue(value: any): boolean | string | Record<string, any>;
     private checkBaseType;
     toString(): string;
-    static fromAntlr(ctx: any, document: DinoQLDocument): DinoQLType;
 }

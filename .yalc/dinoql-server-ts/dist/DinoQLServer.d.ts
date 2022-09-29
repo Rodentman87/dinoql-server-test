@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { DinoQLDocument } from "dinoql-ts";
+import { DinoQLDocument, Serializer } from "dinoql-ts";
 import { ResourceHandler } from "./ResourceHandler.js";
 export interface ServerOptions {
     schema: DinoQLDocument;
@@ -9,6 +9,7 @@ export interface ServerOptions {
 export declare class DinoQLServer {
     schema: DinoQLDocument;
     app: FastifyInstance;
+    serializer: Serializer;
     private resourceHandlers;
     constructor(options: ServerOptions);
     addResourceHandler(handler: ResourceHandler): Promise<void>;

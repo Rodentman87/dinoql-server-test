@@ -1,9 +1,9 @@
-import { parseDocument } from "dinoql-ts";
+import { parse } from "dinoql-ts";
 import { DinoQLServer, ResourceHandler } from "dinoql-server-ts";
 import { readFileSync } from "fs";
 
 const content = readFileSync("./schema.dinoql", "utf8");
-const document = parseDocument(content);
+const document = parse(content);
 
 const server = new DinoQLServer({
 	schema: document,

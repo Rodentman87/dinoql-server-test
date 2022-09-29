@@ -107,11 +107,6 @@ ajv@^8.0.0, ajv@^8.1.0, ajv@^8.10.0:
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-antlr4@^4.10.1:
-  version "4.10.1"
-  resolved "https://registry.yarnpkg.com/antlr4/-/antlr4-4.10.1.tgz#6be8e3e1ead19ca82419ef0ffe974ef4efe4a793"
-  integrity sha512-fmxidcOwmktzHUD+tz8y/zKLI/NfVAB0+MOvnFUBzo8ToFnphK8JY88oOJeRdhnTrAhjtu45bvxddzbb8nMeIA==
-
 archy@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/archy/-/archy-1.0.0.tgz#f9c8c13757cc1dd7bc379ac77b2c62a5c2868c40"
@@ -131,6 +126,11 @@ avvio@^8.1.3:
     debug "^4.0.0"
     fastq "^1.6.1"
     queue-microtask "^1.1.2"
+
+commander@^9.3.0:
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-9.4.0.tgz#bc4a40918fefe52e22450c111ecd6b7acce6f11c"
+  integrity sha512-sRPT+umqkz90UA8M1yqYfnHlZA7fF6nSphDtxeywPZ49ysjxDQybzk13CL+mXekDRG92skbcqCLVovuCusNmFw==
 
 cookie@^0.5.0:
   version "0.5.0"
@@ -152,18 +152,20 @@ deepmerge@^4.2.2:
 "dinoql-server-ts@file:.yalc/dinoql-server-ts":
   version "1.0.0"
   dependencies:
-    dinoql-ts "file:../../.cache/yarn/v6/npm-dinoql-server-ts-1.0.0-7928fcaa-386b-48ff-8dd5-82e01acbc8f7-1655856532608/node_modules/dinoql-server-ts/.yalc/dinoql-ts"
+    dinoql-ts "file:../../.cache/yarn/v6/npm-dinoql-server-ts-1.0.0-1ccb7fdc-21be-4b8a-8583-de43def1b0fd-1664345923097/node_modules/dinoql-server-ts/.yalc/dinoql-ts"
     fastify "^4.1.0"
 
 "dinoql-ts@file:.yalc/dinoql-server-ts/.yalc/dinoql-ts":
   version "1.0.0"
   dependencies:
-    antlr4 "^4.10.1"
+    peggy "^2.0.1"
+    ts-pegjs "^2.1.0"
 
 "dinoql-ts@file:.yalc/dinoql-ts":
   version "1.0.0"
   dependencies:
-    antlr4 "^4.10.1"
+    peggy "^2.0.1"
+    ts-pegjs "^2.1.0"
 
 duplexify@^4.1.2:
   version "4.1.2"
@@ -303,6 +305,14 @@ once@^1.4.0:
   dependencies:
     wrappy "1"
 
+peggy@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/peggy/-/peggy-2.0.1.tgz#d9bfde03b18d6ec2b9b85b2aa5af51577850152c"
+  integrity sha512-mBqfmdUAOVn7RILpXTbcRBhLfTR4Go0SresSnivGDdRylBOyVFJncFiVyCNNpPWq8HmgeRleXHs/Go4o8kQVXA==
+  dependencies:
+    commander "^9.3.0"
+    source-map-generator "0.8.0"
+
 pino-abstract-transport@v0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/pino-abstract-transport/-/pino-abstract-transport-0.5.0.tgz#4b54348d8f73713bfd14e3dc44228739aa13d9c0"
@@ -441,6 +451,11 @@ sonic-boom@^3.0.0:
   dependencies:
     atomic-sleep "^1.0.0"
 
+source-map-generator@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/source-map-generator/-/source-map-generator-0.8.0.tgz#10d5ca0651e2c9302ea338739cbd4408849c5d00"
+  integrity sha512-psgxdGMwl5MZM9S3FWee4EgsEaIjahYV5AzGnwUvPhWeITz/j6rKpysQHlQ4USdxvINlb8lKfWGIXwfkrgtqkA==
+
 split2@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/split2/-/split2-4.1.0.tgz#101907a24370f85bb782f08adaabe4e281ecf809"
@@ -474,6 +489,11 @@ tiny-lru@^8.0.2:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-8.0.2.tgz#812fccbe6e622ded552e3ff8a4c3b5ff34a85e4c"
   integrity sha512-ApGvZ6vVvTNdsmt676grvCkUCGwzG9IqXma5Z07xJgiC5L7akUMof5U8G2JTI9Rz/ovtVhJBlY6mNhEvtjzOIg==
+
+ts-pegjs@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/ts-pegjs/-/ts-pegjs-2.1.0.tgz#8de40541b4a637bb219206d7e3ca27271a9acdfb"
+  integrity sha512-ryGmGq98goGofe8OE+UpZR09tloPmzs7ILMkNyDKOv5ReT578pcFfc26sO834BFDNC0xgimREKOhk2xsRcQOZA==
 
 typescript@^4.7.4:
   version "4.7.4"

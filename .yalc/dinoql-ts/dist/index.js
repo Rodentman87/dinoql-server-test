@@ -1,12 +1,24 @@
-export { DinoQLAction } from "./DinoQLTypes/Action.js";
-export { DinoQLDocument } from "./DinoQLTypes/Document.js";
-export { DinoQLEnum } from "./DinoQLTypes/Enum.js";
-export { DinoQLInterface } from "./DinoQLTypes/Interface.js";
-export { DinoQLProperty } from "./DinoQLTypes/Property.js";
-export { DinoQLQuery } from "./DinoQLTypes/Query.js";
-export { DinoQLResource } from "./DinoQLTypes/Resource.js";
-export { DinoQLScalar } from "./DinoQLTypes/Scalar.js";
-export { DinoQLType } from "./DinoQLTypes/Type.js";
-export { DinoQLParameter } from "./DinoQLTypes/Parameter.js";
-export { parseDocument } from "./parseDocument.js";
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Serializer = exports.DeserializationError = exports.parse = void 0;
+const parser_1 = require("./parser");
+exports.parse = parser_1.parse;
+var deserializer_1 = require("./deserializer");
+Object.defineProperty(exports, "DeserializationError", { enumerable: true, get: function () { return deserializer_1.DeserializationError; } });
+Object.defineProperty(exports, "Serializer", { enumerable: true, get: function () { return deserializer_1.Serializer; } });
+__exportStar(require("./DinoQLTypes"), exports);
 //# sourceMappingURL=index.js.map

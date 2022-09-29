@@ -1,6 +1,11 @@
-import { BuiltInScalars } from "./Scalar.js";
-export class DinoQLType {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DinoQLType = void 0;
+const Base_js_1 = require("./Base.js");
+const Scalar_js_1 = require("./Scalar.js");
+class DinoQLType extends Base_js_1.BaseDinoQLObject {
     constructor(baseTypeId, nullable, array, document) {
+        super();
         this.baseTypeId = baseTypeId;
         this.nullable = nullable;
         this.array = array;
@@ -10,7 +15,7 @@ export class DinoQLType {
         return this.document.getTypeDefinition(this.baseTypeId);
     }
     validateSchema() {
-        if (BuiltInScalars.includes(this.baseTypeId))
+        if (Scalar_js_1.BuiltInScalars.includes(this.baseTypeId))
             return;
         if (!this.baseTypeDef)
             throw new Error(`Type ${this.baseTypeId} not found`);
@@ -66,11 +71,6 @@ export class DinoQLType {
             return `[${this.baseTypeId}${this.nullable ? "?" : ""}]`;
         return `${this.baseTypeId}${this.nullable ? "?" : ""}`;
     }
-    static fromAntlr(ctx, document) {
-        const name = ctx.ID().symbol.text;
-        const isNullable = ctx.OPTIONAL() !== null;
-        const isArray = ctx.ARRAY_START && ctx.ARRAY_START() !== null && ctx.ARRAY_END() !== null;
-        return new DinoQLType(name, isNullable, isArray, document);
-    }
 }
+exports.DinoQLType = DinoQLType;
 //# sourceMappingURL=Type.js.map

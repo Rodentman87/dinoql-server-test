@@ -1,6 +1,7 @@
+import { BaseDinoQLObject } from "./Base.js";
 import { DinoQLDocument } from "./Document.js";
 import { DinoQLType } from "./Type.js";
-export declare class DinoQLProperty {
+export declare class DinoQLProperty extends BaseDinoQLObject {
     name: string;
     type: DinoQLType;
     isId: boolean;
@@ -9,5 +10,4 @@ export declare class DinoQLProperty {
     document: DinoQLDocument;
     constructor(name: string, type: DinoQLType, isId: boolean, isOptional: boolean, docComment: string | null, document: DinoQLDocument);
     validateSchema(): void;
-    static fromAntlr(ctx: any, document: DinoQLDocument): DinoQLProperty;
 }
